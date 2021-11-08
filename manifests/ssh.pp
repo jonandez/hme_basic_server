@@ -18,5 +18,6 @@ class hme_masterless_basic_server::ssh {
   service { 'sshd':
     provider => 'systemd',
     path     => '/usr/sbin/sshd',
+    ensure   => running,
   }
 }
