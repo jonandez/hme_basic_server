@@ -5,4 +5,7 @@
 # @example
 #   include hme_masterless_basic_server
 class hme_masterless_basic_server {
+  include cron
+  include user
+  include sudo
 }
