@@ -11,7 +11,7 @@ class hme_masterless_basic_server::cron {
     command => '/opt/puppetlabs/puppet/bin/puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp',
     user    => 'hme',
     minute  => '*/2',
-    require => File['post-hook'],
+    # require => File['post-hook'],
   }
 
 }
