@@ -7,7 +7,8 @@
 class hme_masterless_basic_server::sudo {
 
   include sudo
-  require ::requirements
+  # require ::requirements
+  require hme_masterless_basic_server::requirements
 
   sudo::conf { 'hme':
     priority => 60,
