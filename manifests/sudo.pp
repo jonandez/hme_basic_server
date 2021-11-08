@@ -6,9 +6,6 @@
 #   include hme_masterless_basic_server::sudo
 class hme_masterless_basic_server::sudo {
 
-  contain hme_masterless_basic_server::requirements
-  contain sudo
-
   sudo::conf { 'hme':
     priority => 60,
     content  => 'hme ALL=(ALL) NOPASSWD: ALL',
