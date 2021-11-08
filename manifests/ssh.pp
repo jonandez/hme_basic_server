@@ -11,5 +11,12 @@ class hme_masterless_basic_server::ssh {
     path   => '/etc/ssh/sshd_config',
     line   => 'PermitRootLogin yes',
     # match  => '^PermitRootLogin',
+    notify => Service['sshd']
+  }
+
+
+  service { 'sshd':
+    provider => 'systemd',
+    path     => '/usr/sbin/sshd',
   }
 }
