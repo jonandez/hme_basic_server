@@ -5,7 +5,7 @@
 # @example
 #   include hme_masterless_basic_server::requirements
 class hme_masterless_basic_server::requirements {
-  $modules = ['saz-sudo --version 7.0.2', 'puppet-firewalld --version 4.4.0']
+  $modules = ['puppetlabs-stdlib --version 7.0.0', 'saz-sudo --version 7.0.2', 'firewalld --version 4.4.0']
 
   $modules.each |String $module| {
     exec { "puppet module install ${module}":
