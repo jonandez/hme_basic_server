@@ -9,12 +9,14 @@ class hme_masterless_basic_server::firewalld {
   include firewalld
 # Drop all traffic and allow pors 8080, 443, 22
 
+
   firewalld_port { 'Open port 8080 in the public zone':
     ensure   => present,
     zone     => 'public',
     port     => 8080,
     protocol => 'tcp',
   }
+
 
   firewalld_port { 'Open port 443 in the public zone':
     ensure   => present,
@@ -23,6 +25,7 @@ class hme_masterless_basic_server::firewalld {
     protocol => 'tcp',
   }
 
+
   firewalld_port { 'Open port 22 in the public zone':
     ensure   => present,
     zone     => 'public',
@@ -30,9 +33,17 @@ class hme_masterless_basic_server::firewalld {
     protocol => 'tcp',
   }
 
-  # firewall { '999 drop all':
-  #   proto  => 'all',
-  #   action => 'drop',
-  #   before => undef,
-  # }
+
+  firewalld_service { 'Allow SSH from the public zone':
+    ensure  => 'present',
+    service => 'ssh',
+    zone    => 'public',
+  }
+
+
+  firewalld_service { 'Allow HTTPS from the public zone':
+    ensure  => 'present',
+    service => 'https',
+    zone    => 'public',
+  }
 }
