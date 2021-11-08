@@ -6,11 +6,13 @@
 #   include hme_masterless_basic_server::sudo
 class hme_masterless_basic_server::sudo {
 
-  require hme_masterless_basic_server::requirements
-  require hme_masterless_basic_server::user
-  # include sudo
-  # require ::requirements
-  Class['hme_masterless_basic_server::sudo'] ~> Class['hme_masterless_basic_server::requirements']
+  exec { 'puppet module install puppetlabs-stdlib --version 7.0.0 --force':
+    path    => '/opt/puppetlabs/puppet/bin/',
+  }
+
+  exec { 'puppet module install saz-sudo --version 7.0.2':
+    path    => '/opt/puppetlabs/puppet/bin/',
+  }
 
   sudo::conf { 'hme':
     priority => 60,
