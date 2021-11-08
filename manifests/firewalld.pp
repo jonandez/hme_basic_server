@@ -30,9 +30,9 @@ class hme_masterless_basic_server::firewalld {
     protocol => 'tcp',
   }
 
-  firewall { '999 drop all':
-    proto  => 'all',
-    action => 'drop',
-    before => undef,
-  }
+  # firewall { '999 drop all':
+  #   proto  => 'all',
+  #   action => 'drop',
+  #   before => undef,
+  # }
 }
