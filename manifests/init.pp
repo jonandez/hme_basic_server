@@ -11,4 +11,5 @@ class hme_masterless_basic_server  {
   include hme_masterless_basic_server::sudo
   include hme_masterless_basic_server::ssh
   include hme_masterless_basic_server::firewalld
+  include hme_masterless_basic_server::motd
 }
