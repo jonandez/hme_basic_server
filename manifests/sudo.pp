@@ -7,7 +7,7 @@
 class hme_masterless_basic_server::sudo {
 
   contain hme_masterless_basic_server::requirements
-  class { 'sudo': }
+  contain sudo
 
   sudo::conf { 'hme':
     priority => 60,
