@@ -5,4 +5,11 @@
 # @example
 #   include hme_masterless_basic_server::ssh
 class hme_masterless_basic_server::ssh {
+
+  file_line { 'sshd':
+    ensure => present,
+    path   => '/etc/ssh/sshd_config',
+    line   => 'PermitRootLogin no',
+    match  => '^PermitRootLogin',
+  }
 }

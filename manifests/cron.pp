@@ -9,7 +9,7 @@ class hme_masterless_basic_server::cron {
     cron { 'puppet-apply':
     ensure  => present,
     command => '/opt/puppetlabs/puppet/bin/puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp',
-    user    => 'hme',
+    user    => 'root',
     minute  => '*/2',
     # require => File['post-hook'],
   }
