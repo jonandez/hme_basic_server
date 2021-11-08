@@ -13,7 +13,7 @@ class hme_masterless_basic_server::requirements {
   #   }
   # }
 
-  exec { 'puppet module install puppetlabs-stdlib --version 7.0.0 --force':
-    path    => '/opt/puppetlabs/puppet/bin/',
-  }
+  # exec { 'puppet module install puppetlabs-stdlib --version 7.0.0 --force':
+  #   path    => '/opt/puppetlabs/puppet/bin/',
+  # }
 }
