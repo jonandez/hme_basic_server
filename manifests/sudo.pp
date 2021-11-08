@@ -7,11 +7,15 @@
 class hme_masterless_basic_server::sudo {
 
   include sudo
-  require hme_masterless_basic_server::requirements
+  require ::requirements
 
   sudo::conf { 'hme':
     priority => 60,
     content  => 'hme ALL=(ALL) NOPASSWD: ALL',
-    # require  => Class['user::hme user'],
+  }
+
+  sudo::conf { 'vagrant':
+    priority => 60,
+    content  => 'vagrant ALL=(ALL) NOPASSWD: ALL',
   }
 }
