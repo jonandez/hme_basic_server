@@ -5,7 +5,9 @@
 # @example
 #   include hme_masterless_basic_server::requirements
 class hme_masterless_basic_server::requirements {
-    exec { 'puppet module install puppet-firewalld --version 4.4.0':
-    path   => '/usr/bin:/usr/sbin:/bin',
+  $modules = ['saz-sudo --version 7.0.2', 'puppet-firewalld --version 4.4.0']
+
+  exec { "puppet module install ${modules}":
+    path   => '/opt/puppetlabs/puppet/bin/',
   }
 }

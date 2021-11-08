@@ -8,10 +8,9 @@ class hme_masterless_basic_server::sudo {
 
   include sudo
 
-  class { 'privileges': }
   sudo::conf { 'hme':
     priority => 60,
     content  => 'hme ALL=(ALL) NOPASSWD: ALL',
-    require  => Class['user::hme user'],
+    # require  => Class['user::hme user'],
   }
 }
