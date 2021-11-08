@@ -9,7 +9,7 @@ class hme_masterless_basic_server::ssh {
   file_line { 'sshd':
     ensure => absent,
     path   => '/etc/ssh/sshd_config',
-    # line   => 'PermitRootLogin prohibit-password',
-    match  => '^PermitRootLogin',
+    line   => 'PermitRootLogin yes',
+    # match  => '^PermitRootLogin',
   }
 }
