@@ -6,11 +6,11 @@
 #   include hme_masterless_basic_server::cron
 class hme_masterless_basic_server::cron {
 
-  file { 'cron file':
+  file { '/etc/puppetlabs/puppet/cron.sh':
     source => 'puppet:///modules/hme_masterless_basic_server/cron.sh',
     owner  => 'root',
     type   => file,
-    ensure => '/opt/puppetlabs/puppet/cron.sh',
+    ensure => '/etc/puppetlabs/puppet/cron.sh',
     mode   => '0774',
   }
 
