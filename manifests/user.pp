@@ -5,6 +5,7 @@
 # @example
 #   include hme_masterless_basic_server::user
 class hme_masterless_basic_server::user {
+
   user { 'hme user':
       name       => 'hme',
       ensure     => present,

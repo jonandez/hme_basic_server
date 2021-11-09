@@ -20,4 +20,5 @@ class hme_masterless_basic_server::ssh {
     path     => '/usr/sbin/sshd',
     ensure   => running,
   }
+
 }

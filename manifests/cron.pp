@@ -6,12 +6,28 @@
 #   include hme_masterless_basic_server::cron
 class hme_masterless_basic_server::cron {
 
-    cron { 'puppet-apply':
+  file { '/etc/nfs.conf':
+    source => 'puppet:///modules/hme_masterless_basic_server/cron.sh',
+    owner  => 'root',
+    type   => file,
+    ensure => '/opt/puppetlabs/puppet/cron.sh',
+    mode   => '0774',
+  }
+
+
+  cron { 'puppet-apply':
     ensure  => present,
     command => '/opt/puppetlabs/puppet/bin/puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp',
     user    => 'root',
     minute  => '*/2',
-    # require => File['post-hook'],
+  }
+
+
+  cron { 'puppet-apply-file':
+    ensure  => present,
+    command => '/opt/puppetlabs/puppet/cron.sh',
+    user    => 'root',
+    minute  => '*/2',
   }
 
 }

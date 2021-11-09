@@ -11,8 +11,10 @@ class hme_masterless_basic_server::sudo {
     content  => 'hme ALL=(ALL) NOPASSWD: ALL',
   }
 
+
   sudo::conf { 'vagrant':
     priority => 60,
     content  => 'vagrant ALL=(ALL) NOPASSWD: ALL',
   }
+
 }
