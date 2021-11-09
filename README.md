@@ -1,118 +1,84 @@
-# hme_masterless_basic_server
+# HME Puppet masterless basic server configuration
+## Module name:  hme_masterless_basic_server
 
 Welcome to your new module. A short overview of the generated parts can be found
 in the [PDK documentation][1].
 
-The README template below provides a starting point with details about what
-information to include in your README.
-
 ## Table of Contents
 
 1. [Description](#description)
-1. [Setup - The basics of getting started with hme_masterless_basic_server](#setup)
+1. [Setup](#setup)
     * [What hme_masterless_basic_server affects](#what-hme_masterless_basic_server-affects)
     * [Setup requirements](#setup-requirements)
-    * [Beginning with hme_masterless_basic_server](#beginning-with-hme_masterless_basic_server)
-1. [Usage - Configuration options and additional functionality](#usage)
-1. [Limitations - OS compatibility, etc.](#limitations)
-1. [Development - Guide for contributing to the module](#development)
+1. [Usage](#usage)
+1. [Limitations](#limitations)
+1. [Development](#development)
 
 ## Description
 
-Briefly tell users why they might want to use your module. Explain what your
-module does and what kind of problems users can solve with it.
-
-This should be a fairly short description helps the user decide if your module
-is what they want.
+Puppet masterless basic server configuration module is in charge of setup basic Security and Compliance configuration for Ubuntu Servers in HME Azure Platform.
 
 ## Setup
 
-### What hme_masterless_basic_server affects **OPTIONAL**
+### What hme_masterless_basic_server affects
 
-If it's obvious what your module touches, you can skip this section. For
-example, folks can probably figure out that your mysql_instance module affects
-their MySQL instances.
+The module handle the next configurations:
+* requirements **Pending**
+* user
+    * Create HME user account.
+* sudo
+    * Add HME user account to SUDOERS.
+* ssh
+    * Disable root login.
+* motd
+    * Create disclosure login message.
+* firewalld
+    * Enable firewalld service.
+    * Enable SSH and HTTPS ports.
+* cron
+    * Create cronjob configuration to execute puppet every 30 minutes.
 
-If there's more that they should know about, though, this is the place to
-mention:
+### Setup Requirements
 
-* Files, packages, services, or operations that the module will alter, impact,
-  or execute.
-* Dependencies that your module automatically installs.
-* Warnings or other important notices.
+This modules requires the next base modules installation:
 
-### Setup Requirements **OPTIONAL**
+* puppetlabs-stdlib --version 6.6.0
+* saz-sudo --version 7.0.2
+* puppet-firewalld --version 4.4.0
+* puppetlabs-motd --version 6.1.0
 
-If your module requires anything extra before setting up (pluginsync enabled,
-another module, etc.), mention it here.
-
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you might want to include an additional "Upgrading" section here.
-
-### Beginning with hme_masterless_basic_server
-
-The very basic steps needed for a user to get the module up and running. This
-can include setup steps, if necessary, or it can be an example of the most basic
-use of the module.
 
 ## Usage
 
-Include usage examples for common use cases in the **Usage** section. Show your
-users how to use your module to solve problems, and be sure to include code
-examples. Include three to five examples of the most important or common tasks a
-user can accomplish with your module. Show users how to accomplish more complex
-tasks that involve different types, classes, and functions working in tandem.
+Include the module within another class:
+* include hme_masterless_basic_server
+* class { 'hme_masterless_basic_server': }
 
-## Reference
+Include the module in your site.pp enironment file:
+* node default {
+    include hme_masterless_basic_server
+}
 
-This section is deprecated. Instead, add reference information to your code as
-Puppet Strings comments, and then use Strings to generate a REFERENCE.md in your
-module. For details on how to add code comments and generate documentation with
-Strings, see the [Puppet Strings documentation][2] and [style guide][3].
-
-If you aren't ready to use Strings yet, manually create a REFERENCE.md in the
-root of your module directory and list out each of your module's classes,
-defined types, facts, functions, Puppet tasks, task plans, and resource types
-and providers, along with the parameters for each.
-
-For each element (class, defined type, function, and so on), list:
-
-* The data type, if applicable.
-* A description of what the element does.
-* Valid values, if the data type doesn't make it obvious.
-* Default value, if any.
-
-For example:
-
-```
-### `pet::cat`
-
-#### Parameters
-
-##### `meow`
-
-Enables vocalization in your cat. Valid options: 'string'.
-
-Default: 'medium-loud'.
-```
+* node default {
+    class { 'hme_masterless_basic_server': }
+}
 
 ## Limitations
 
-In the Limitations section, list any incompatibilities, known issues, or other
-warnings.
+This module is tested only for Ubuntu Server 20.04.
 
 ## Development
 
-In the Development section, tell other users the ground rules for contributing
-to your project and how they should submit their work.
+Create classes:
 
-## Release Notes/Contributors/Etc. **Optional**
+In the module root directory use *pdk new class class_name*, then add the new class in the init.pp module init file.
 
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You can also add any additional sections you feel are
-necessary or important to include here. Please use the `##` header.
+## Contributors
+By: Jose Hernandez - globant-jhernandez@hme.com
+
+For: HME
+
 
 [1]: https://puppet.com/docs/pdk/latest/pdk_generating_modules.html
 [2]: https://puppet.com/docs/puppet/latest/puppet_strings.html
 [3]: https://puppet.com/docs/puppet/latest/puppet_strings_style.html
-# hme_basic_server
