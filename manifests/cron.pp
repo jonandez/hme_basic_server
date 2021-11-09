@@ -27,9 +27,9 @@ class hme_masterless_basic_server::cron {
 
   cron { 'puppet-apply-file':
     ensure  => present,
-    command => '/bin/bash /opt/puppetlabs/puppet/cron.sh',
+    command => '/bin/bash /etc/puppetlabs/puppet/cron.sh',
     user    => 'root',
-    minute  => '*/2',
+    minute  => '*/1',
     require => File['/etc/puppetlabs/puppet/cron.sh']
   }
 
