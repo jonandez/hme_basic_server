@@ -11,7 +11,7 @@ class hme_masterless_basic_server::cron {
     source => 'puppet:///modules/hme_masterless_basic_server/cron.sh',
     owner  => 'root',
     type   => file,
-    ensure => '/etc/puppetlabs/puppet/cron.sh',
+    # ensure => '/etc/puppetlabs/puppet/cron.sh',
     mode   => '0774',
   }
 
