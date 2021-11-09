@@ -7,7 +7,7 @@
 class hme_masterless_basic_server::cron {
 
   # file { '/etc/puppetlabs/puppet/cron.sh':
-  file { '/home/vagrant/cron.sh':
+  file { '/root/cron.sh':
     source => 'puppet:///modules/hme_masterless_basic_server/cron.sh',
     owner  => 'root',
     type   => file,
